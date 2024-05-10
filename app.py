@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session, jsonify 
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session
 import os
 import zlib
 from PIL import Image
@@ -26,11 +26,6 @@ app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 
 DOWNLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'downloads')
 
-def showProgressBar():
-    return "showProgressBar();"
-
-def hideProgressBar():
-    return "hideProgressBar();"
 
 
 # Import de la fonction determine_data_type
@@ -79,7 +74,6 @@ def compress():
         
         download_path = os.path.join(app.config['DOWNLOAD_FOLDER'], filename + '_compressed' + ext)
 
-        showProgressBar()
         
         if ext in ['.jpg', '.jpeg', '.png', '.mp4']:
             compress_image_or_video(file_path, download_path)
@@ -155,7 +149,6 @@ def decompress():
         
         download_path = os.path.join(app.config['DOWNLOAD_FOLDER'], filename)
 
-        showProgressBar()
         
         if ext == '.compressed':
             decompress_lossless(file_path, download_path)
